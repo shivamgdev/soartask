@@ -52,6 +52,8 @@ const InputField = ({labelName, name, type, value, placeholder, handleInput}) =>
             value={value} 
             onChange={handleInput} 
             placeholder={placeholder}
+
+            required
         />
     </InputBox>
   )

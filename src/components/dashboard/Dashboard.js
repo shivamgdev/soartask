@@ -15,6 +15,7 @@ import person3 from '../../images/person3.svg'
 import person4 from '../../images/person4.svg'
 import sendIcon from '../../images/sendicon.svg'
 import BalanceChart from '../balanceChart/BalanceChart'
+import { Link } from 'react-router-dom'
 
 const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
 
@@ -70,7 +71,9 @@ const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
     justify-content: space-between;
     align-items: center;
 
-    p{
+    a{
+      color: black;
+      text-decoration: none;
       &:hover{
         color: blue;
         cursor: pointer;
@@ -209,7 +212,7 @@ const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
     }
   `;
 
-  const AmountInput = styled.div`
+  const AmountInput = styled.form`
     padding-block: 6px;
     padding-left: 12px;
     background-color: #EDF1F7;
@@ -283,6 +286,12 @@ const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    alert('Amount Sent successfully')
+  } 
+  
   return (
     <>
       <Container>
@@ -306,7 +315,7 @@ const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
                 <MyCards>
                   <MyCardsInfo>
                     <CardsTitle>My Cards</CardsTitle>
-                    <p>See All</p>
+                    <Link to="/">See All</Link>
                   </MyCardsInfo>
 
                   <Cards>
@@ -435,13 +444,15 @@ const Dashboard = ({toggleSideBar, setToggleSideBar}) => {
                     <SendAmountBox>
                       <p>Write Amount</p>
 
-                      <AmountInput>
-                        <input type="number" 
+                      <AmountInput onSubmit={handleSubmit}>
+                        <input 
+                          type="number" 
                           name='quicktransferamount'
                           placeholder='00.00'
+                          required
                         />
 
-                        <button>
+                        <button type='submit'>
                           Send
                           <img src={sendIcon} alt="sendicon" />
                         </button>

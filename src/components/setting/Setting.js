@@ -138,6 +138,11 @@ const Setting = ({toggleSideBar, setToggleSideBar}) => {
     setProfileImage(URL.createObjectURL(e.target.files[0]))
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('profile updated successfully')
+  }
+
   return (
     <>
       <Container>
@@ -194,7 +199,7 @@ const Setting = ({toggleSideBar, setToggleSideBar}) => {
 
                     </ProfilePic>
 
-                    <div>
+                    <form onSubmit={handleSubmit}>
                     
                       <TwoFields>
 
@@ -281,11 +286,11 @@ const Setting = ({toggleSideBar, setToggleSideBar}) => {
                       </TwoFields>
 
                       <SaveButton>
-                        <button>
+                        <button type='submit'>
                           Save
                         </button>
                       </SaveButton>
-                    </div>
+                    </form>
 
                   </ProfileContainer>
                 }
